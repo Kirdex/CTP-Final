@@ -19,6 +19,10 @@ model.compile(optimizer='adam',
               loss='binary_crossentropy', 
               metrics=['accuracy'])
 
+model.summary()
+
+
+
 # Image processing function for Streamlit using TensorFlow
 def process_image_for_inference(image, img_size=(32, 32)):
     img = tf.keras.preprocessing.image.load_img(image, target_size=img_size)
@@ -51,6 +55,11 @@ test_ds = tf.keras.utils.image_dataset_from_directory(
     image_size=(img_height, img_width),
     batch_size=batch_size
 )
+
+loss, accuracy = model.evaluate(test_ds)
+print(f"Test Loss: {loss}, Test Accuracy: {accuracy}")
+
+print("model summary after: ", model.summary())
 
 def display_images(dataset, num_images=5):
     # Fetch a few images from the dataset
@@ -142,6 +151,26 @@ with tab2:
     img = load_and_process_images("./train/REAL/0000 (2).jpg")
     st.image(img[0], caption="Preprocessed Image", use_container_width =True)
 
+
+    st.subheader("3. Our Label Disribution")
+    st.write("We have a balanced dataset with equal number of real and fake images.")
+    st.write("Here's the distribution of our labels:")
+    st.image("./static/label_distribution.png", caption="Label Distribution", use_container_width =True)
+
+    st.subheader("4. We trained a Convolutional Neural Network (CNN) on the dataset")
+    st.write("Our model is a simple CNN with 3 convolutional layers and 2 dense layers.")
+    st.write("Here's a summary of our model:")
+    st.image("./static/model_summary.png", caption="Model Summary", use_container_width =True)
+
+    st.subheader("5. History of our model")
+    st.write("Our model achieved an accuracy of over 95% on the test dataset.")
+    st.write("Here's the history of our model:")
+    st.image("./static/model_history.png", caption="Model History", use_container_width =True)
+
+    st.subheader("6. Confusion Matrix")
+    st.write("Our model has a high accuracy and low loss.")
+    st.write("Here's the confusion matrix of our model:")
+    st.image("./static/confusion_matrix.png", caption="Confusion Matrix", use_container_width =True)
 
 
     st.write("### Explore Datasets")
