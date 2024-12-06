@@ -229,10 +229,11 @@ def catRound(start):
             label="Select a cat",
             images=[
                 # fake_image,
+                Image.open("./guess/fake/windowcat.png").convert('RGB'),
                 Image.open(real_images_arr[0]).convert('RGB'),
                 Image.open(real_images_arr[1]).convert('RGB'),
                 Image.open(real_images_arr[2]).convert('RGB'),
-                Image.open("./guess/fake/windowcat.png").convert('RGB'),
+                
              
             ],
             captions=["A cat", "cat 2", "cat3", "cat4"],
