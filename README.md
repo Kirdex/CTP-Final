@@ -12,7 +12,20 @@ A Python based Streamlit web app to detect AI-generated images
 
 ## Description
 
-This Streamlit web app utizilies machine learning models from Hugging face to analyze the matrix array of images to detect AI-generated content. It provides scores for images ********\_\_********
+This Streamlit web app utilizes a custom-built convolutional neural network (CNN) that we developed and trained specifically for 10 distinct categories. The model analyzes image arrays to detect AI-generated content, providing detailed scores for each image.
+
+## Groups
+
+1. Airplane
+2. Automobile
+3. Bird
+4. Cat
+5. Deer
+6. Dog
+7. Frog
+8. Horse
+9. Ship
+10. Truck
 
 ## Features
 
